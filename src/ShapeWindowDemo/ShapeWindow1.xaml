@@ -1,0 +1,23 @@
+<Window x:Class="ShapeWindowDemo.ShapeWindow1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CustomShapeWindowDemo" Width="260" Height="300"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="微软雅黑" FontSize="16">
+
+    <Grid>
+        <Path x:Name="HeartPath" Fill="#FFE24B7A">
+            <Path.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="4" Opacity="0.45" />
+            </Path.Effect>
+        </Path>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Content="切换为心形" Click="Button_Heart_Click" />
+            <Button Content="切换为圆形" Click="Button_Circle_Click" />
+            <Button Content="切换为圆角矩形" Click="Button_Rounded_Click" />
+            <Button Content="关闭" Click="Button_Close_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
