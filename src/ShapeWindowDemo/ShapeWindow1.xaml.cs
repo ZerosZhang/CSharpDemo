@@ -34,23 +34,11 @@ public partial class ShapeWindow1 : Window
         HeartPath.Data = _geometry;
     }
 
-    private void Button_Heart_Click(object sender, RoutedEventArgs e)
-    {
-        ApplyShape(HeartGeometry);
-    }
+    private void Button_Heart_Click(object sender, RoutedEventArgs e) => ApplyShape(HeartGeometry);
 
-    private void Button_Circle_Click(object sender, RoutedEventArgs e)
-    {
-        ApplyShape(CircleGeometry);
-    }
+    private void Button_Circle_Click(object sender, RoutedEventArgs e) => ApplyShape(CircleGeometry);
 
-    private void Button_Rounded_Click(object sender, RoutedEventArgs e)
-    {
-        ApplyShape(RoundedRectGeometry);
-    }
+    private void Button_Rounded_Click(object sender, RoutedEventArgs e) => ApplyShape(RoundedRectGeometry);
 
-    private void Button_Close_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void Button_Close_Click(object sender, RoutedEventArgs e) => Close();
 }

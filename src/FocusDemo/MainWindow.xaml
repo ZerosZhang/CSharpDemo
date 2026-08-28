@@ -1,0 +1,82 @@
+<Window x:Class="FocusDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="FocusDemo" Width="800" Height="520"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="微软雅黑" FontSize="15"
+        d:DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="250" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- IsTabStop 演示 -->
+        <GroupBox Header="IsTabStop 演示（控制是否参与 Tab 导航）"
+                  Grid.Row="0" Grid.Column="0" Margin ="10" Padding="10">
+            <StackPanel>
+                <TextBlock Text="按 Tab：Button 2 被跳过，焦点从 1 直接到 3"
+                           Foreground="#FF666666" TextWrapping="Wrap" Margin="0,0,0,6" />
+                <Button Content="Button 1" />
+                <Button Content="Button 2 (IsTabStop=False)" IsTabStop="False" />
+                <Button Content="Button 3" />
+
+                <Separator Margin="0,10" />
+
+                <TextBlock Text="ContentControl 默认 IsTabStop=True，Tab 会先停在容器上，再按一次才进入 TextBox"
+                           Foreground="#FF666666" TextWrapping="Wrap" Margin="0,0,0,6" />
+                <ContentControl IsTabStop="True">
+                    <TextBox Width="180" HorizontalContentAlignment="Center" />
+                </ContentControl>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Focusable 演示 -->
+        <GroupBox Header="Focusable 演示（控制能否获得焦点）"
+                  Grid.Row="0" Grid.Column="1" Margin="10" Padding="10">
+            <StackPanel>
+                <TextBlock Text="Button 2 无法通过 Tab / 点击获得焦点"
+                           Foreground="#FF666666" TextWrapping="Wrap" Margin="0,0,0,6" />
+                <Button Content="Button 1" />
+                <Button Content="Button 2 (Focusable=False)" Focusable="False" />
+                <Button Content="Button 3" />
+
+                <Separator Margin="0,10" />
+
+                <TextBlock Text="输入后点击下方 Focusable=False 按钮，焦点不离开 TextBox，绑定不会提交（下方文本不变）"
+                           Foreground="#FF666666" TextWrapping="Wrap" Margin="0,0,0,6" />
+                <TextBox Text="{Binding InputText, UpdateSourceTrigger=LostFocus}" Width="180"
+                         HorizontalContentAlignment="Center" />
+                <Button Content="执行 (Focusable=False)" Focusable="False" />
+                <TextBlock Text="绑定结果：" Margin="0,6,0,0" />
+                <TextBlock Text="{Binding InputText}" Foreground="#FF0077CC" FontWeight="Bold" />
+            </StackPanel>
+        </GroupBox>
+
+        <!-- 当前焦点显示 -->
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                Margin="0,10,0,0" Padding="10" Background="#FFF5F5F5"
+                BorderBrush="#FFDDDDDD" BorderThickness="1" CornerRadius="4">
+            <TextBlock x:Name="FocusInfo" Text="当前焦点：无" />
+        </Border>
+    </Grid>
+</Window>
