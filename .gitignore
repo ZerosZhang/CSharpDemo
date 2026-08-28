@@ -1,0 +1,71 @@
+## .NET Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+[Dd]ebugPublic/
+[Rr]elease*/
+
+## .NET Core / ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.user
+*.suo
+*.userprefs
+*.vscode
+.vs/
+.vscode/
+
+## Visual Studio
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+*.pdb
+*.exe
+*.dll
+*.so
+*.dylib
+*.rlib
+*.app
+*.ipa
+*.cache
+*.log
+
+## NuGet
+*.nupkg
+*.snupkg
+nuget.config
+packages/
+*.nuget.props
+*.nuget.targets
+
+## Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+## Files to ignore
+*.swp
+*~
+*.pidb
+*.userprefs
+*.cc
+*.clang-format
+.idea/
+*.suo
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Rider
+.idea/
+
+## Project Rider
+.idea/
