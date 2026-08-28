@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragReorderDemo"
         Title="DragReorderDemo" Height="400" SizeToContent="Width"
+        WindowStartupLocation="CenterScreen"
         FontFamily="Consolas, 微软雅黑" FontSize="18"
         d:DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
