@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:components="clr-namespace:DigitalTube.UIWidget">
+
+    <Style TargetType="{x:Type components:DigitalTube}">
+        <Setter Property="Foreground" Value="#FFFF3B30" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#FF333333" />
+        <Setter Property="BorderThickness" Value="6" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:DigitalTube}">
+                    <Viewbox Stretch="Uniform">
+                        <Grid Width="574" Height="1040" Background="{TemplateBinding Background}">
+                            <Path x:Name="tube1" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 460.8,105 508,57.6 460.8,10.4 113,10.4 65.8,57.6 113,105 Z" />
+                            <Path x:Name="tube2" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 471.4,463.4 471.4,115.6 518.8,68.4 566,115.6 566,463.4 518.8,510.6 Z" />
+                            <Path x:Name="tube3" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 518.8,532 471.4,579.2 471.4,926.8 518.8,974.2 566,926.8 566,579.2 Z" />
+                            <Path x:Name="tube4" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 460.8,937.6 113,937.6 65.8,984.8 113,1032 460.8,1032 508,984.8 Z" />
+                            <Path x:Name="tube5" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 102.4,926.8 102.4,579.2 55.2,532 8,579.2 8,926.8 55.2,974.2 Z" />
+                            <Path x:Name="tube6" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 102.4,463.4 102.4,115.6 55.2,68.4 8,115.6 8,463.4 55.2,510.6 Z" />
+                            <Path x:Name="tube7" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"
+                                  Data="M 460.8,474 113,474 65.8,521.2 113,568.4 460.8,568.4 508,521.2 Z" />
+                        </Grid>
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type components:DigitalTubeView}">
+        <Setter Property="DigitCount" Value="4" />
+        <Setter Property="Height" Value="120" />
+        <Setter Property="Foreground" Value="#FFFF3B30" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#FF333333" />
+        <Setter Property="BorderThickness" Value="6" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type components:DigitalTubeView}">
+                    <StackPanel x:Name="PART_Digits" Orientation="Horizontal"
+                                Background="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

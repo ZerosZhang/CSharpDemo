@@ -1,0 +1,25 @@
+<Window x:Class="DigitalTube.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:DigitalTube.UIWidget"
+        Title="DigitalTube" Width="420" Height="320"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="微软雅黑" FontSize="16"
+        d:DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="数码管演示（0-9999，超出显示 E）"
+                   HorizontalAlignment="Center" Margin="0,0,0,12" />
+
+        <components:DigitalTubeView Value="{Binding Number}" d:Value="8" />
+
+        <Slider Minimum="0" Maximum="10000" Value="{Binding Number}"
+                IsSnapToTickEnabled="True" TickFrequency="1"
+                Width="360" Margin="0,16,0,0" />
+
+        <TextBlock Text="{Binding Number, StringFormat='当前数值：{0}'}"
+                   HorizontalAlignment="Center" Margin="0,8,0,0" />
+    </StackPanel>
+</Window>
