@@ -12,7 +12,7 @@
 ## 运行
 
 ```powershell
-dotnet run --project src/ValidateDemo
+dotnet run --project src/DataBinding/ValidateDemo
 ```
 
 填入非法内容（清空用户名、年龄填 `222`、邮箱填 `abc`）即可看到红框与错误提示。

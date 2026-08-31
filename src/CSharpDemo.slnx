@@ -1,8 +1,14 @@
 <Solution>
-  <Project Path="FocusDemo/FocusDemo.csproj" />
-  <Project Path="DigitalTubeDemo/DigitalTubeDemo.csproj" />
-  <Project Path="ShapeWindowDemo/ShapeWindowDemo.csproj" />
-  <Project Path="DragReorderDemo/DragReorderDemo.csproj" />
-  <Project Path="WindowShakeDemo/WindowShakeDemo.csproj" />
-  <Project Path="ValidateDemo/ValidateDemo.csproj" />
+  <Folder Name="/原生控件/">
+    <Project Path="NativeControls/FocusDemo/FocusDemo.csproj" />
+    <Project Path="NativeControls/ShapeWindowDemo/ShapeWindowDemo.csproj" />
+    <Project Path="NativeControls/DragReorderDemo/DragReorderDemo.csproj" />
+    <Project Path="NativeControls/WindowShakeDemo/WindowShakeDemo.csproj" />
+  </Folder>
+  <Folder Name="/自定义控件/">
+    <Project Path="CustomControls/DigitalTubeDemo/DigitalTubeDemo.csproj" />
+  </Folder>
+  <Folder Name="/数据绑定/">
+    <Project Path="DataBinding/ValidateDemo/ValidateDemo.csproj" />
+  </Folder>
 </Solution>

@@ -5,8 +5,8 @@
 ## 运行方式
 
 - **整个解决方案**：`dotnet build src/CSharpDemo.slnx`
-- **单个 Demo**：`dotnet run --project src/<Demo>`
-  - 例：`dotnet run --project src/ValidateDemo`
+- **单个 Demo**：`dotnet run --project src/<分类>/<Demo>`
+  - 例：`dotnet run --project src/DataBinding/ValidateDemo`
 
 ## 技术要点
 
@@ -19,25 +19,25 @@
 
 ### ShapeWindowDemo — 无边框与异形窗口
 
-[查看详细说明](src/ShapeWindowDemo/README.md)
+[查看详细说明](src/NativeControls/ShapeWindowDemo/README.md)
 
 演示 WPF 中两种无边框窗口的实现：**异形窗口**（`WindowStyle="None"` + `Window.Clip` 裁剪，可运行时切换心形 / 圆形 / 圆角矩形）与 **WindowChrome** 自定义标题栏（保留系统阴影与缩放，含最大化 8px 溢出补偿）。
 
 ### FocusDemo — 键盘焦点控制
 
-[查看详细说明](src/FocusDemo/README.md)
+[查看详细说明](src/NativeControls/FocusDemo/README.md)
 
 演示 `IsTabStop`（是否参与 Tab 导航）与 `Focusable`（能否获得焦点）两个焦点属性，窗口底部实时显示当前键盘焦点所在控件。
 
 ### DragReorderDemo — ItemsControl 拖拽排序
 
-[查看详细说明](src/DragReorderDemo/README.md)
+[查看详细说明](src/NativeControls/DragReorderDemo/README.md)
 
 通过附加属性给 `ItemsControl` 添加鼠标拖拽能力：单列表内部排序、跨列表拖拽、分组限制（同组可互拖、不同组禁止），拖拽时显示绿色插入位置虚线。
 
 ### WindowShakeDemo — 窗口抖动
 
-[查看详细说明](src/WindowShakeDemo/README.md)
+[查看详细说明](src/NativeControls/WindowShakeDemo/README.md)
 
 封装为静态方法的窗口抖动效果，通过动画修改窗口位置实现，支持自定义幅度 / 周期 / 次数，连续触发安全（自动停止上一次动画）。
 
@@ -45,7 +45,7 @@
 
 ### DigitalTubeDemo — 7 段数码管控件
 
-[查看详细说明](src/DigitalTubeDemo/README.md)
+[查看详细说明](src/CustomControls/DigitalTubeDemo/README.md)
 
 自定义 `DigitalTube` 单管（继承 `Control`，用 Path 绘制六边形段）与多位 `DigitalTubeView` 组合控件，支持外观定制、宽高联动、超位显示 `E`。
 
@@ -53,6 +53,6 @@
 
 ### ValidateDemo — INotifyDataErrorInfo 数据校验
 
-[查看详细说明](src/ValidateDemo/README.md)
+[查看详细说明](src/DataBinding/ValidateDemo/README.md)
 
 演示 `INotifyDataErrorInfo` 接口实现绑定层实时校验：手写校验、DataAnnotations 验证特性（`Required` / `Range` / `EmailAddress`）两种方式对比，配合自定义 `Validation.ErrorTemplate` 显示红框与错误文本。
