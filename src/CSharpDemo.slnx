@@ -1,7 +1,8 @@
 <Solution>
   <Project Path="FocusDemo/FocusDemo.csproj" />
-  <Project Path="DigitalTube/DigitalTube.csproj" />
+  <Project Path="DigitalTubeDemo/DigitalTubeDemo.csproj" />
   <Project Path="ShapeWindowDemo/ShapeWindowDemo.csproj" />
   <Project Path="DragReorderDemo/DragReorderDemo.csproj" />
   <Project Path="WindowShakeDemo/WindowShakeDemo.csproj" />
+  <Project Path="ValidateDemo/ValidateDemo.csproj" />
 </Solution>

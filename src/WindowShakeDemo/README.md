@@ -43,6 +43,28 @@ public static void Shake(Window _window,
     double _shake_range = 15, double _duration = 50, double _repeat_count = 3)
 ```
 
+## 实现原理（`WindowShake.cs`）
+
+核心是 `DoubleAnimation` 直接作用于窗口位置属性，无需 Storyboard 或 XAML 触发器：
+
+```csharp
+DoubleAnimation _animation = new DoubleAnimation
+{
+    From = _base_value,                                  // 抖动前的基准位置
+    To = _base_value + _shake_range,                     // 偏移幅度
+    Duration = TimeSpan.FromMilliseconds(_duration),     // 单次周期时长
+    AutoReverse = true,                                  // 一来一回形成往复抖动
+    RepeatBehavior = new RepeatBehavior(_repeat_count),  // 抖动次数
+    FillBehavior = FillBehavior.Stop,                    // 结束不保持偏移值
+};
+_window.BeginAnimation(Window.LeftProperty, _animation); // 水平抖动；垂直同理用 TopProperty
+```
+
+**连续触发安全**（防止位置漂移）双重保障：
+
+1. 触发前先 `BeginAnimation(Window.LeftProperty, null)` —— 传 `null` 即停止上一次动画，属性回到本地值，再读取基准位置。
+2. 订阅 `_animation.Completed`，结束时再次清除动画并强制回写 `_base_value`。
+
 ## 项目结构
 
 | 文件 | 说明 |

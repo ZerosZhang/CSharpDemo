@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace DigitalTube;
+namespace DigitalTubeDemo;
 
 public partial class App : Application
 {

@@ -29,6 +29,38 @@ dotnet run --project ShapeWindowDemo.csproj
 | 透明 / 异形 | 支持（需 `AllowsTransparency`） | 不支持 |
 | 自定义标题栏 | 可，但需自己处理拖动等 | 借助 `CaptionHeight` + `IsHitTestVisibleInChrome` |
 
+## 实现原理
+
+### 异形窗口（`ShapeWindow1`）
+
+核心技术组合：`WindowStyle="None"` + `AllowsTransparency="True"` + `Window.Clip` 裁剪。
+
+- 三种形状用 `static readonly Geometry` 定义，心形通过 `Geometry.Parse` 迷你语言字符串描述。
+- **运行时切换形状 = 直接改 `Window.Clip`**，并同步更新 Path 的 `Data`，保证命中区与显示一致：
+
+```csharp
+private void ApplyShape(Geometry _geometry)
+{
+    Clip = _geometry;            // 裁剪窗口命中区
+    HeartPath.Data = _geometry;  // 更新 Path 填充，所见即所剪
+}
+```
+
+- 阴影挂在 Path 上而非窗口（透明窗口本身不支持阴影）；因为没有 WindowChrome，拖动需手动挂 `MouseDown += (_, _) => DragMove()`。
+- 注意：`AllowsTransparency` 有性能开销，且透明窗口无法正常最大化。
+
+### WindowChrome 窗口（`ShapeWindow2`）
+
+```xml
+<WindowChrome.WindowChrome>
+    <WindowChrome CaptionHeight="32" ResizeBorderThickness="6" />
+</WindowChrome.WindowChrome>
+```
+
+- 标题栏 `Border` 高度固定 32，与 `CaptionHeight="32"` 严格对应；`CaptionHeight` 区域天然支持拖动，无需手写 `DragMove()`。
+- 标题栏内的按钮必须加 `WindowChrome.IsHitTestVisibleInChrome="True"` 才能在这块系统标题栏区域收到鼠标事件。
+- **最大化 8px 溢出补偿**：`Window_StateChanged` 时给根 `Border` 加一圈与系统边框等宽的 `BorderThickness`（取值 `SystemParameters.ResizeFrame*Border*`），把最大化后超出屏幕的内容顶回可视区，还原时清 0。
+
 ## 项目结构
 
 | 文件 | 说明 |

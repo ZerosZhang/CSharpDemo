@@ -1,6 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:components="clr-namespace:DigitalTube.UIWidget">
+                    xmlns:components="clr-namespace:DigitalTubeDemo.UIWidget">
 
     <Style TargetType="{x:Type components:DigitalTube}">
         <Setter Property="Foreground" Value="#FFFF3B30" />

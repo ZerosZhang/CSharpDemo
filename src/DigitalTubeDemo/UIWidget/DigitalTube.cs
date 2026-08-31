@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Shapes;
 
-namespace DigitalTube.UIWidget;
+namespace DigitalTubeDemo.UIWidget;
 
 /// <summary>
 /// 单数码管，<see cref="Value"/> 范围 0-9，超出范围显示 E（错误）

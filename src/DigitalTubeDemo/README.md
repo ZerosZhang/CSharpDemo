@@ -12,7 +12,7 @@
 ## 运行
 
 ```bash
-dotnet run --project DigitalTube.csproj
+dotnet run --project DigitalTubeDemo.csproj
 ```
 
 拖动 Slider，多位数码管实时显示数值（0-10000，10000 时显示 EEEE）。
@@ -56,6 +56,25 @@ dotnet run --project DigitalTube.csproj
 ```
 
 `AssemblyInfo.cs` 中的 `ThemeInfo` 属性指向程序集内的 `Themes/Generic.xaml`，供 `DefaultStyleKey` 解析默认模板。
+
+## 实现原理
+
+### 单管绘制（`DigitalTube`）
+
+- 继承 `Control`，无 `OnRender` 自绘，全部靠模板呈现；静态构造函数里 `DefaultStyleKeyProperty.OverrideMetadata` 指向自身类型。
+- 模板外层 `Viewbox Stretch="Uniform"` 包裹固定尺寸 `Grid`（574×1040 逻辑画布），缩放完全交给 Viewbox；网格内是 7 个命名 Path，每个 Path 的 `Data` 是 6 点闭合多边形（六边形段）。
+- **7 段亮灭通过切换 Visibility 而非 Fill**：`OnApplyTemplate` 里用 `GetTemplateChild("tube1") as Path` 取出命名段，`SetSegment` 里 `Visibility = _is_lit ? Visible : Hidden`，熄灭段直接隐藏。
+- `Value` DP 回调里先判模板子元素是否为空再渲染——"DP 先于模板应用"的防御写法，保证值/模板两种时序都能正确显示。
+
+### 多位视图（`DigitalTubeView`）
+
+- 模板只是水平 `StackPanel`（`PART_Digits`），单管作为子元素动态增删：`DigitCount` 变大就 new 新管，变小就移除尾部多余的。
+- **不足位隐藏**：右对齐，`_index < 0` 的管 `Visibility.Hidden`；**超位显示 E**：全部管 `Value = -1`（不在 0-9 范围，单管渲染为 E）。
+- **宽高联动**：用 `DependencyPropertyDescriptor.FromProperty` 监听宽高，任一变化反推另一个（公式基于 `TubeAspect = 574/1040`），用 `_is_adjusting` 布尔标志防止互推回环。
+
+### 默认样式解析链路
+
+`AssemblyInfo.cs` 的 `[assembly: ThemeInfo(..., ResourceDictionaryLocation.SourceAssembly)]` 让 WPF 在本程序集内查找 `Themes/Generic.xaml`；`Generic.xaml` 本身只是空字典壳，通过 pack URI 合并 `UIWidget/DigitalTubeStyle.xaml`，实现默认样式与样式入口分离。
 
 ## 项目结构
 

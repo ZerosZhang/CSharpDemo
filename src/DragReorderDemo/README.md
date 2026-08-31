@@ -48,6 +48,27 @@ dotnet run --project DragReorderDemo.csproj
 - 设置相同组名：同组的列表可以互拖。
 - 设置不同组名：不同组之间不能互拖。
 
+## 实现原理
+
+全程使用 WPF 原生 `DragDrop.DoDragDrop` + `AdornerLayer`，不依赖任何第三方库；对数据源唯一要求是 `ItemsSource` 实现 `IList`（演示用 `ObservableCollection<string>`）。
+
+### 拖拽流程（`DragReorder.cs`）
+
+1. `PreviewMouseLeftButtonDown` 记录起点并 `CaptureMouse()`，用隧道事件捕获所有子块。
+2. `PreviewMouseMove` 位移超过 `DragThreshold = 5px` 才判定为拖拽，构造 `DataObject` 后调用**阻塞式** `DragDrop.DoDragDrop`，直到放下或按 Esc 才返回。
+3. `DragOver` 用"中线法"（鼠标在某项中线之前 → 插入到该项前面）计算插入索引，`ShowLine` 画虚线。
+4. `Drop` 直接对 `ItemsSource`（`IList`）做 `Remove` + `Insert` 完成重排；同列表向下移动时先 `_index--`（Remove 会让目标位前移一位）。
+5. 每个列表的 `DataObject` 格式名唯一（`$"DragReorder.Item.{host.GetHashCode()}"`），避免多列表数据串扰。
+
+### 跨列表与分组（`CrossDragReorder.cs`）
+
+- 与单列表的关键差异：所有启用列表**共享同一格式名**，数据才能跨列表传递；用静态字段记录源列表 `DragSource`。
+- 分组限制：`Group` 附加属性比较，`DragSourceGroup != GetGroup(_host)` 时 `Effects = None`，`Drop` 里再校验一次（双保险）。不设 Group 视为默认组，默认组之间可互拖。
+
+### 插入虚线（`InsertionAdorner.cs`）
+
+继承 `Adorner` 绘制在装饰层上，坐标系以宿主为基准，不受外层 ScrollViewer/Padding 影响。绿色虚线 `Pen` 用 `DashStyle([4, 3], 0)` 定义并 `Freeze()`；`MoveTo` 仅在坐标变化时 `InvalidateVisual()`，避免无谓重绘闪烁。
+
 ## 项目结构
 
 | 文件 | 说明 |
