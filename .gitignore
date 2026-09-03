@@ -28,7 +28,6 @@ artifacts/
 ## Build results
 *.pdb
 *.exe
-*.dll
 *.so
 *.dylib
 *.rlib

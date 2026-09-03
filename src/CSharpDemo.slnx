@@ -11,4 +11,7 @@
   <Folder Name="/数据绑定/">
     <Project Path="DataBinding/ValidateDemo/ValidateDemo.csproj" />
   </Folder>
+  <Folder Name="/HalconDemo/">
+    <Project Path="HalconDemo/SerializeDemo/SerializeDemo.csproj" />
+  </Folder>
 </Solution>

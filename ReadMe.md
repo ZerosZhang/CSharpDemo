@@ -10,7 +10,6 @@
 
 ## 技术要点
 
-- **.NET SDK**：`net10.0-windows`，纯 WPF，无 NuGet 依赖。
 - **代码风格**：文件作用域命名空间、PascalCase 成员、`_snake_case` 局部变量/参数、不使用 `var`、C# 12 集合表达式 `[]`、中文注释。
 - **MVVM**：各 Demo 手动实现 `INotifyPropertyChanged`（可用 C# 13 `field` 关键字），不引用 CommunityToolkit.Mvvm。
 - **解决方案文件**是 `.slnx`（新版 XML 格式）而非 `.sln`，新增 Demo 时需在 `src/CSharpDemo.slnx` 中注册。
@@ -56,3 +55,11 @@
 [查看详细说明](src/DataBinding/ValidateDemo/README.md)
 
 演示 `INotifyDataErrorInfo` 接口实现绑定层实时校验：手写校验、DataAnnotations 验证特性（`Required` / `Range` / `EmailAddress`）两种方式对比，配合自定义 `Validation.ErrorTemplate` 显示红框与错误文本。
+
+## HalconDemo
+
+### SerializeDemo — Halcon HObject Json 序列化
+
+[查看详细说明](src/HalconDemo/SerializeDemo/README.md)
+
+演示 Halcon `HObject` / `HImage` 用 Newtonsoft.Json 序列化时的两个坑及解决：`new HObject()` 空对象序列化抛 `#4056`（用 `null` 占位代替）；`HObject` 字段存放 `HImage` 反序列化抛 `#5276`（字段声明类型需与存放类型一致）。
