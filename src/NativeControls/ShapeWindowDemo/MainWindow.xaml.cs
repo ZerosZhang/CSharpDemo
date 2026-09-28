@@ -18,4 +18,24 @@ public partial class MainWindow : Window
     {
         new ShapeWindow2().Show();
     }
+
+    private void Button_MaximizeWindow1_Click(object sender, RoutedEventArgs e)
+    {
+        new MaximizeWindow1().Show();
+    }
+
+    private void Button_MaximizeWindow2_Click(object sender, RoutedEventArgs e)
+    {
+        new MaximizeWindow2().Show();
+    }
+
+    private void Button_MaximizeWindow3_Click(object sender, RoutedEventArgs e)
+    {
+        new MaximizeWindow3().Show();
+    }
+
+    private void Button_MaximizeWindow4_Click(object sender, RoutedEventArgs e)
+    {
+        new MaximizeWindow4().Show();
+    }
 }

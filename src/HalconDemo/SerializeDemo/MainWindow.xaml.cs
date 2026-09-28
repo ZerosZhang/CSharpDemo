@@ -31,6 +31,7 @@ public partial class MainWindow : Window
     }
 
     private void Button_Solution2_Click(object sender, RoutedEventArgs e)
+
     {
         RunScenario("=== 问题2 解决：字段声明类型与存放类型一致（HImage）===", SerializeTest.RunHImageSlot);
     }

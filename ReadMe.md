@@ -16,9 +16,9 @@
 
 ## 原生控件
 
-**[ShapeWindowDemo — 无边框与异形窗口](src/NativeControls/ShapeWindowDemo/README.md)**
+**[ShapeWindowDemo — 无边框、异形与最大化窗口](src/NativeControls/ShapeWindowDemo/README.md)**
 
-演示 WPF 中两种无边框窗口的实现：**异形窗口**（`WindowStyle="None"` + `Window.Clip` 裁剪，可运行时切换心形 / 圆形 / 圆角矩形）与 **WindowChrome** 自定义标题栏（保留系统阴影与缩放，含最大化 8px 溢出补偿）。
+演示 WPF 中窗口形态与最大化的几种做法：**异形窗口**（`WindowStyle="None"` + `Window.Clip` 裁剪，可运行时切换心形 / 圆形 / 圆角矩形）、**WindowChrome** 自定义标题栏（保留系统阴影与缩放），以及**四种最大化方式**——普通最大化、无边框铺满整屏并盖住任务栏、无边框贴合工作区、WindowChrome 最大化；四个最大化窗口共用一套信息面板，实时对比各种系统尺寸参数的取值差异。
 
 **[FocusDemo — 键盘焦点控制](src/NativeControls/FocusDemo/README.md)**
 
