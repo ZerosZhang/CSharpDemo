@@ -32,6 +32,10 @@
 
 封装为静态方法的窗口抖动效果，通过动画修改窗口位置实现，支持自定义幅度 / 周期 / 次数，连续触发安全（自动停止上一次动画）。
 
+**[TextBoxDemo — 绑定浮点数时小数点被吞掉](src/NativeControls/TextBoxDemo/README.md)**
+
+复现 `TextBox` 绑定浮点数并设置 `UpdateSourceTrigger=PropertyChanged` 时小数点输不进去的经典坑：左侧复现问题，右侧用 `LostFocus` 触发与绑定 `string` 两组对照，底部实时打印源属性赋值日志，直观展示绑定"写源 → 把源值格式化回写覆盖 `Text`"这条回路。
+
 ## 自定义控件
 
 **[DigitalTubeDemo — 7 段数码管控件](src/CustomControls/DigitalTubeDemo/README.md)**

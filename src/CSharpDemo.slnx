@@ -4,6 +4,7 @@
     <Project Path="NativeControls/ShapeWindowDemo/ShapeWindowDemo.csproj" />
     <Project Path="NativeControls/DragReorderDemo/DragReorderDemo.csproj" />
     <Project Path="NativeControls/WindowShakeDemo/WindowShakeDemo.csproj" />
+    <Project Path="NativeControls/TextBoxDemo/TextBoxDemo.csproj" />
   </Folder>
   <Folder Name="/自定义控件/">
     <Project Path="CustomControls/DigitalTubeDemo/DigitalTubeDemo.csproj" />
