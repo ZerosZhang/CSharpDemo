@@ -8,11 +8,11 @@
 
 **问题复现：只在 XAML 里写附加事件**
 
-按钮上写 `local:LongPress.LongPressed="..."`，长按没有任何反应，计数器始终停在 0。原因是 XAML 只完成了事件订阅，不会去调 `AddLongPressedHandler`，鼠标监听和计时器根本没装上。
+按钮上写 `local:LongPressed.LongPressed="..."`，长按没有任何反应，计数器始终停在 0。原因是 XAML 只完成了事件订阅，不会去调 `AddLongPressedHandler`，鼠标监听和计时器根本没装上。
 
 **正确做法：在 Code-Behind 里显式注册**
 
-调用 `LongPress.AddLongPressedHandler(按钮, 处理器)`，订阅事件的同时把鼠标监听和计时器一起装上，长按正常触发。
+调用 `LongPressed.AddLongPressedHandler(按钮, 处理器)`，订阅事件的同时把鼠标监听和计时器一起装上，长按正常触发。
 
 **换个控件类型**
 
@@ -48,13 +48,13 @@ dotnet run --project LongPressedDemo.csproj
 1. **编译期必须存在配对的访问器。** 删掉 `AddLongPressedHandler` / `RemoveLongPressedHandler` 后编译直接失败：
 
    ```text
-   MainWindow.xaml(8,17): error MC3072: XML 命名空间"clr-namespace:LongPressedDemo"中不存在属性"LongPress.LongPressed"。
+   MainWindow.xaml(8,17): error MC3072: XML 命名空间"clr-namespace:LongPressedDemo"中不存在属性"LongPressed.LongPressed"。
    ```
 
 2. **但运行期不会调用它们。** 在访问器里加计数，构造一个用 XAML 挂了该事件的窗口，计数始终是 0；再手动触发事件，XAML 里写的处理器确实被调用了。也就是说 XAML 只是「借访问器的存在」通过编译，真正的订阅由 BAML 在加载窗口时直接完成，等价于：
 
    ```csharp
-   Button_Temp.AddHandler(LongPress.LongPressedEvent, OnLongPressed);
+   Button_Temp.AddHandler(LongPressed.LongPressedEvent, OnLongPressed);
    ```
 
 所以访问器里的额外逻辑——这里就是把鼠标监听挂上去那一步——压根不会执行。事件能被订阅、能被处理，但没有任何东西会去触发它。
@@ -81,6 +81,6 @@ dotnet run --project LongPressedDemo.csproj
 
 | 文件 | 说明 |
 |------|------|
-| `LongPressedEvent.cs` | 附加路由事件与长按行为实现（`LongPressedEvent`、一对 XAML 访问器、`State`） |
+| `LongPressed.cs` | 附加路由事件与长按行为实现（`LongPressedEvent`、一对 XAML 访问器、`State`） |
 | `MainWindow.xaml` | 演示界面（问题复现 / 正确做法 / 两个坑） |
 | `MainWindow.xaml.cs` | 在 Code-Behind 里注册处理器并统计触发次数 |

@@ -13,8 +13,8 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         // 正确做法：显式注册，订阅事件的同时把鼠标监听和计时器装上
-        LongPress.AddLongPressedHandler(Button_Code, Button_Code_LongPressed);
-        LongPress.AddLongPressedHandler(Border_Code, Border_Code_LongPressed);
+        LongPressed.AddLongPressedHandler(Button_Code, Button_Code_LongPressed);
+        LongPressed.AddLongPressedHandler(Border_Code, Border_Code_LongPressed);
     }
 
     /// <summary>

@@ -40,9 +40,9 @@
                       Margin="0,0,8,0" Padding="12">
                 <StackPanel>
                     <TextBlock TextWrapping="Wrap" Foreground="Tomato" Margin="0,0,0,12"
-                               Text="local:LongPress.LongPressed 只完成了事件订阅，XAML 并不会去调 AddLongPressedHandler，鼠标监听和计时器根本没装上——长按不会有任何反应。" />
+                               Text="local:LongPressed.LongPressed 只完成了事件订阅，XAML 并不会去调 AddLongPressedHandler，鼠标监听和计时器根本没装上——长按不会有任何反应。" />
                     <Button x:Name="Button_Xaml" Content="按住我（不会有反应）"
-                            local:LongPress.LongPressed="Button_Xaml_LongPressed" />
+                            local:LongPressed.LongPressed="Button_Xaml_LongPressed" />
                     <TextBlock Style="{StaticResource CountTextStyle}">
                         <Run Text="已触发：" />
                         <Run x:Name="Run_XamlCount" Text="0 次"
@@ -56,7 +56,7 @@
                       Margin="8,0,0,0" Padding="12">
                 <StackPanel>
                     <TextBlock TextWrapping="Wrap" Foreground="#FF666666" Margin="0,0,0,12"
-                               Text="调用 LongPress.AddLongPressedHandler，订阅事件的同时会把鼠标监听和计时器一起装上。" />
+                               Text="调用 LongPressed.AddLongPressedHandler，订阅事件的同时会把鼠标监听和计时器一起装上。" />
                     <Button x:Name="Button_Code" Content="按住我（500ms 后触发）" />
                     <TextBlock Style="{StaticResource CountTextStyle}">
                         <Run Text="已触发：" />

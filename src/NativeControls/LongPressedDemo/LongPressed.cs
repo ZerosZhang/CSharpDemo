@@ -8,11 +8,11 @@ namespace LongPressedDemo;
 /// <summary>
 /// 附加事件：给任意 <see cref="UIElement"/> 加上「长按」支持。
 /// <para>
-/// 注意：在 XAML 里写 local:LongPress.LongPressed="处理器" 只能完成事件订阅，
+/// 注意：在 XAML 里写 local:LongPressed.LongPressed="处理器" 只能完成事件订阅，
 /// 计时器机制必须在 Code-Behind 里调用 <see cref="AddLongPressedHandler"/> 才会装上。
 /// </para>
 /// </summary>
-public static class LongPress
+public static class LongPressed
 {
     /// <summary>长按判定的时间阈值（毫秒）</summary>
     public const double PressDuration = 500;
@@ -24,7 +24,7 @@ public static class LongPress
         EventManager.RegisterRoutedEvent("LongPressed",
                                          RoutingStrategy.Bubble,
                                          typeof(RoutedEventHandler),
-                                         typeof(LongPress));
+                                         typeof(LongPressed));
 
     /// <summary>
     /// XAML 附加事件访问器。
