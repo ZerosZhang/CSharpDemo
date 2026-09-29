@@ -81,6 +81,6 @@ dotnet run --project LongPressedDemo.csproj
 
 | 文件 | 说明 |
 |------|------|
-| `LongPress.cs` | 附加路由事件与长按行为实现（`LongPressedEvent`、一对 XAML 访问器、`State`） |
+| `LongPressedEvent.cs` | 附加路由事件与长按行为实现（`LongPressedEvent`、一对 XAML 访问器、`State`） |
 | `MainWindow.xaml` | 演示界面（问题复现 / 正确做法 / 两个坑） |
 | `MainWindow.xaml.cs` | 在 Code-Behind 里注册处理器并统计触发次数 |
