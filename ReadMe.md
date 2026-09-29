@@ -36,6 +36,10 @@
 
 复现 `TextBox` 绑定浮点数并设置 `UpdateSourceTrigger=PropertyChanged` 时小数点输不进去的经典坑：左侧复现问题，右侧用 `LostFocus` 触发与绑定 `string` 两组对照，底部实时打印源属性赋值日志，直观展示绑定"写源 → 把源值格式化回写覆盖 `Text`"这条回路。
 
+**[LongPressDemo — 鼠标长按的附加路由事件](src/NativeControls/LongPressDemo/README.md)**
+
+把「按住 500ms」封装成一个附加路由事件：左右对照「只写 XAML 附加事件」与「在 Code-Behind 里显式注册」两种订阅方式——前者能编译、事件也确实被订阅了，但计时器机制不会启动，长按永远不触发，因为 XAML 并不会调用附加事件的 Add/Remove 访问器；附加事件不限控件类型，`Button` 与 `Border` 都能用。
+
 ## 自定义控件
 
 **[DigitalTubeDemo — 7 段数码管控件](src/CustomControls/DigitalTubeDemo/README.md)**
