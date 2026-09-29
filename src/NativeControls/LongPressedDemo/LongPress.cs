@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace LongPressDemo;
+namespace LongPressedDemo;
 
 /// <summary>
 /// 附加事件：给任意 <see cref="UIElement"/> 加上「长按」支持。

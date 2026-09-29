@@ -1,4 +1,4 @@
-# LongPressDemo — 鼠标长按的附加路由事件
+# LongPressedDemo — 鼠标长按的附加路由事件
 
 把「按住 500ms」封装成一个附加路由事件 `LongPressed`，任何 `UIElement` 加上去就能用。
 
@@ -25,7 +25,7 @@
 ## 运行
 
 ```bash
-dotnet run --project LongPressDemo.csproj
+dotnet run --project LongPressedDemo.csproj
 ```
 
 按住窗口里的目标不放，超过 500ms 计数加一；中途松开或把鼠标移出目标都会取消。
@@ -48,7 +48,7 @@ dotnet run --project LongPressDemo.csproj
 1. **编译期必须存在配对的访问器。** 删掉 `AddLongPressedHandler` / `RemoveLongPressedHandler` 后编译直接失败：
 
    ```text
-   MainWindow.xaml(8,17): error MC3072: XML 命名空间"clr-namespace:LongPressDemo"中不存在属性"LongPress.LongPressed"。
+   MainWindow.xaml(8,17): error MC3072: XML 命名空间"clr-namespace:LongPressedDemo"中不存在属性"LongPress.LongPressed"。
    ```
 
 2. **但运行期不会调用它们。** 在访问器里加计数，构造一个用 XAML 挂了该事件的窗口，计数始终是 0；再手动触发事件，XAML 里写的处理器确实被调用了。也就是说 XAML 只是「借访问器的存在」通过编译，真正的订阅由 BAML 在加载窗口时直接完成，等价于：

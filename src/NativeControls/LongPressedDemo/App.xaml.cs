@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace LongPressDemo;
+namespace LongPressedDemo;
 
 public partial class App : Application
 {
