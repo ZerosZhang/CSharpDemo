@@ -57,3 +57,9 @@
 **[SerializeDemo — Halcon HObject Json 序列化](src/HalconDemo/SerializeDemo/README.md)**
 
 演示 Halcon `HObject` / `HImage` 用 Newtonsoft.Json 序列化时的两个坑及解决：`new HObject()` 空对象序列化抛 `#4056`（用 `null` 占位代替）；`HObject` 字段存放 `HImage` 反序列化抛 `#5276`（字段声明类型需与存放类型一致）。
+
+## ApplicationDemo
+
+**[IsolatedStorageDemo — 用独立存储记录软件启动次数](src/ApplicationDemo/IsolatedStorageDemo/README.md)**
+
+用 `IsolatedStorageFile` 把 `Application.Properties` 持久化成 json 文件：启动时读回、计数加一、立刻写回，窗口同时列出 Properties 的键、值与值的类型，配「计数 +1」「保存」「重新加载」「清除存储数据」「打开存储根目录」五个按钮，直观看到 json 往返后值的类型从 `Int32` 变成 `JsonElement`。

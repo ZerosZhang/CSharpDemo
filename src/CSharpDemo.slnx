@@ -16,4 +16,7 @@
   <Folder Name="/HalconDemo/">
     <Project Path="HalconDemo/SerializeDemo/SerializeDemo.csproj" />
   </Folder>
+  <Folder Name="/ApplicationDemo/">
+    <Project Path="ApplicationDemo/IsolatedStorageDemo/IsolatedStorageDemo.csproj" />
+  </Folder>
 </Solution>
